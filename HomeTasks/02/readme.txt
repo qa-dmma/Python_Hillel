@@ -1,0 +1,1 @@
+On second lesson (additional lesson) was provided info about git without any H/T
