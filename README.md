@@ -7,3 +7,4 @@ Lessons history:
 3. Date: 13.01.2026 <br>On the second lesson we disscused math operators (and math lib), variables, 
 operators and cycle for. 
 <br>Folder "02"
+4. Date: 23.01.2025 <br> Third lesson covered math operator and work with lists
