@@ -1,4 +1,4 @@
-#3. Hashtag from string
+# 3. Hashtag from string
 
 import operator
 
@@ -11,7 +11,7 @@ operators = {
 
 cycle = "y"
 
-while cycle == "y":
+while cycle == "y" or "yes":
     while True:
         try:
             firstInput = float(input("Введіть перше число: "))
@@ -38,11 +38,9 @@ while cycle == "y":
 
     result = operators[operation](firstInput, secondInput)
     print("Результат:", result)
-    while True:
-        cycle = input("Продовжити? (y/n): ").strip().lower()
-        if cycle in ["y", "n"]:
-            break
-        else:
-            print("Помилка: введіть 'y' або 'n'")
+
+    cycle = input("Продовжити? (y/yes): ").strip().lower()
+    if cycle not in ["y", "yes"]:
+        break
 
 print("Програма завершена")
