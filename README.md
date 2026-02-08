@@ -11,3 +11,4 @@ operators and cycle for.
 5. Date: 27.01.2025 <br> 4 lesson - lists (sort, copy), cycle
 6. Date: 30.01.2025 <br> 5 lesson - strings, string formatting
 7. Date: 03.02.2025 <br> 6 lesson - more than strings
+8. Date: 06.02.2025 <br> 7 lesson - namedtuple, set, function
