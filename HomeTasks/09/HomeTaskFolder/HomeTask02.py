@@ -1,4 +1,4 @@
-def difference(*args):
+def difference(*args) -> float:
     """
     The difference between numbers
 
