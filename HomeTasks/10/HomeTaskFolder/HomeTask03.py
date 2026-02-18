@@ -1,7 +1,7 @@
 def is_even(digit: int) -> bool:
     """
     Check whether it is even or odd
- 
+
 
     :param digit: int
     :return: bool
