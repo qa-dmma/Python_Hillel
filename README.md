@@ -14,3 +14,4 @@ operators and cycle for.
 8. Date: 06.02.2026 <br> 7 lesson - namedtuple, set, function
 9. Date: 10.02.2026 <br> 8 lesson - global variables arguments and default functions
 10. Date: 13.02.2026 <br> 9 lesson - application, documentation, recursion and lambda
+11. Date: 17.02.2026 <br> 10 lesson - decorating with arguments
