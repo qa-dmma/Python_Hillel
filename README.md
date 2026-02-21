@@ -15,3 +15,4 @@ operators and cycle for.
 9. Date: 10.02.2026 <br> 8 lesson - global variables arguments and default functions
 10. Date: 13.02.2026 <br> 9 lesson - application, documentation, recursion and lambda
 11. Date: 17.02.2026 <br> 10 lesson - decorating with arguments
+12. Date: 20.02.2026 <br> 11 lesson - algorithm analysis. OOP, files
