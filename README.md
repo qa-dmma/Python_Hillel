@@ -16,3 +16,4 @@ operators and cycle for.
 10. Date: 13.02.2026 <br> 9 lesson - application, documentation, recursion and lambda
 11. Date: 17.02.2026 <br> 10 lesson - decorating with arguments
 12. Date: 20.02.2026 <br> 11 lesson - algorithm analysis. OOP, files
+13. Date: 24.02.2026 <br> 12 lesson - classes and objects. Inheritance
