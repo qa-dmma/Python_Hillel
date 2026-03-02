@@ -1,9 +1,9 @@
 import sqlite3
-import queries
+from . import queries
 
 
 class DB:
-    def __init__(self, db_name='sqlite_db.db'):
+    def __init__(self, db_name='DataBase/sqlite_db.db'):
         self.db_name = db_name
 
     def create_DB(self):
@@ -39,18 +39,11 @@ class DB:
     def create_table(self):
         self.execute_request(queries.CREATE_TABLE)
 
-    def insert_user(self, id, sex, last_name, first_name,
+    def insert_user(self, sex, last_name, first_name,
                     fathers_name, birth_date, death_date, age):
-        params = (id, sex, last_name, first_name,
+        params = (sex, last_name, first_name,
                   fathers_name, birth_date, death_date, age)
         self.execute_request(queries.INSERT_USER, params)
 
     def get_all_users(self):
         self.execute_request(queries.SELECT_ALL_USERS)
-
-
-db = DB()
-conn = db.create_DB()
-conn.close()
-
-

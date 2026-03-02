@@ -1,6 +1,6 @@
 CREATE_TABLE = """
 CREATE TABLE IF NOT EXISTS diploma_users (
-    marker INTEGER PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     sex TEXT,
     last_name TEXT,
     first_name TEXT,
@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS diploma_users (
 
 INSERT_USER = """
 INSERT INTO diploma_users
-(marker, sex, last_name, first_name, fathers_name, birth_date, death_date, age)
-VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+(sex, last_name, first_name, fathers_name, birth_date, death_date, age)
+VALUES (?, ?, ?, ?, ?, ?, ?)
 """
 
 SELECT_ALL_USERS = "SELECT * FROM diploma_users"

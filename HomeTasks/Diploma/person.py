@@ -26,8 +26,8 @@ class Person(Human):
 
 class Record:
     def __init__(self):
+        self.user = None
         self.users = []
-        self._id_counter = 0
 
     def __str__(self):
         result = ""
@@ -38,7 +38,6 @@ class Record:
 
     def add_person(self, birth_date, first_name, fathers_name='', last_name='', death_date=''):
         self.user = {}
-        self._id()
         self._add_first_name(first_name)
         self._add_last_name(last_name)
         self._fathers_name(fathers_name)
@@ -47,6 +46,18 @@ class Record:
         self._age()
         self._sex(first_name, fathers_name)
         self.users.append(self.user)
+
+    def save_to_db(self, db_source):
+        for user in self.users:
+            db_source.insert_user(
+                sex=user['Sex'],
+                last_name=user['Last_Name'],
+                first_name=user['First_Name'],
+                fathers_name=user['Fathers_Name'],
+                birth_date=user['Birth_Date'],
+                death_date=user['Death_Date'],
+                age=user['Age']
+            )
 
     def _add_first_name(self, first_name):
         if len(first_name) >= 2:
@@ -82,26 +93,3 @@ class Record:
         formatted = utils.age_count(self.user.get('Birth_Date'), self.user.get('Death_Date'))
         self.user['Age'] = formatted
         return formatted
-
-    def _id(self):
-        if not hasattr(self, "users"):
-            self.users = []
-
-        if not self.users:
-            new_id = 1
-        else:
-            last_id = max(user['Id'] for user in self.users)
-            new_id = last_id + 1
-
-        self.user['Id'] = new_id
-        return new_id
-
-
-rec = Record()
-rec.add_person("22.03.1992", "Дмитро","Батькович", "Призвищенко" )
-rec.add_person("20.03.1990", "Микола", "", "")
-rec.add_person("11 10 2000", "Іванка", "", "","02 10 2010")
-rec.add_person("12.10.1980", "Євген", "Михайлович", "Крут","11.10.2001")
-rec.add_person("01/02/1995", "Євгенія", "", "","12 10 2001")
-rec.add_person("3-9-2007", "Дмитро", "Євгенович", "","02 10 2010")
-print(rec)
