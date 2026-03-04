@@ -6,3 +6,4 @@ __pycache__/
 **/__pycache__/
 *.py[cod]
 /HomeTasks/.venv/
+/HomeTasks/Diploma/backend/DataBase/sqlite_db.db

@@ -1,4 +1,4 @@
-import utils
+from . import utils
 
 
 class Human:
@@ -49,15 +49,18 @@ class Record:
 
     def save_to_db(self, db_source):
         for user in self.users:
+            d_date = str(user['Death_Date']) if user['Death_Date'] else ""
+
             db_source.insert_user(
                 sex=user['Sex'],
-                last_name=user['Last_Name'],
+                last_name=user['Last_Name'] or "",
                 first_name=user['First_Name'],
-                fathers_name=user['Fathers_Name'],
+                fathers_name=user['Fathers_Name'] or "",
                 birth_date=user['Birth_Date'],
-                death_date=user['Death_Date'],
+                death_date=d_date,
                 age=user['Age']
             )
+        self.users = []
 
     def _add_first_name(self, first_name):
         if len(first_name) >= 2:
@@ -67,11 +70,11 @@ class Record:
             return f'First name should be 2 or more characters'
 
     def _add_last_name(self, last_name):
-        self.user['Last_Name'] = last_name
+        self.user['Last_Name'] = last_name if last_name else ""
         return last_name
 
     def _fathers_name(self, fathers_name):
-        self.user['Fathers_Name'] = fathers_name
+        self.user['Fathers_Name'] = fathers_name if fathers_name else ""
         return fathers_name
 
     def _sex(self, name, fathers_name):

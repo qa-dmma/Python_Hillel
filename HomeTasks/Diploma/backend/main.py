@@ -1,5 +1,6 @@
 import person
-from DataBase import db
+from DataBase import get_db
+
 
 rec = person.Record()
 rec.add_person("22.03.1992", "Дмитро", "Батькович", "Призвищенко")
@@ -10,7 +11,9 @@ rec.add_person("01/02/1995", "Євгенія", "", "", "12 10 2001")
 rec.add_person("3-9-2007", "Дмитро", "Євгенович", "", "02 10 2010")
 print(rec)
 
-database = db.DB()
-database.create_table()
+# database = db.DB()
+# database.create_table()
 
-rec.save_to_db(database)
+db = get_db()
+db.create_table()
+rec.save_to_db(db)
