@@ -18,4 +18,5 @@ operators and cycle for.
 12. Date: 20.02.2026 <br> 11 lesson - algorithm analysis. OOP, files
 13. Date: 24.02.2026 <br> 12 lesson - classes and objects. Inheritance
 14. Date: 27.02.2026 <br> 13 lesson - exceptions and their handling
-15. Date: 03.03.2026 <ber> 14 lesson - module and package 
+15. Date: 03.03.2026 <br> 14 lesson - module and package 
+16. Date: 06.03.2026 <br> 15 lesson - json files. Ways to control access to class fields
