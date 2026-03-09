@@ -78,9 +78,28 @@ def gender_define(first_name, fathers_name):
     return 'unknown'
 
 
-def record_counter(id):
-    if len(id) == 0:
-        return 1
-    else:
-        id += 1
-        return id
+# def record_counter(id):
+#     if len(id) == 0:
+#         return 1
+#     else:
+#         id += 1
+#         return id
+
+def format_age(age):
+    if age is None or age == "":
+        return ""
+    try:
+        age_int = int(age)
+        rem10 = age_int % 10
+        rem100 = age_int % 100
+
+        if rem10 == 1 and rem100 != 11:
+            word = "рік"
+        elif rem10 in (2, 3, 4) and rem100 not in (12, 13, 14):
+            word = "роки"
+        else:
+            word = "років"
+
+        return f"{age_int} {word}"
+    except (ValueError, TypeError):
+        return age

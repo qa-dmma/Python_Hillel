@@ -1,5 +1,6 @@
 import sqlite3
 import os
+
 from . import queries
 from .queries import DELETE_ALL_USERS, RESET_SEQUENCE
 
