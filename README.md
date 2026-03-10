@@ -20,3 +20,4 @@ operators and cycle for.
 14. Date: 27.02.2026 <br> 13 lesson - exceptions and their handling
 15. Date: 03.03.2026 <br> 14 lesson - module and package 
 16. Date: 06.03.2026 <br> 15 lesson - json files. Ways to control access to class fields
+17. Date: 10.03.2026 <br> 15 lesson - web crawling: summarizing scraping results and data storage
