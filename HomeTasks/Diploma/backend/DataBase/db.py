@@ -29,7 +29,6 @@ class DB:
                 cursor.execute(sql_request, params)
             else:
                 cursor.execute(sql_request)
-
             if fetch:
                 result = cursor.fetchall()
                 return result
@@ -61,10 +60,7 @@ class DB:
         search_str = search_str.strip()
         like_pattern = f"%{search_str}%"
         params = tuple([like_pattern] * 9)
-
         result = self.execute(queries.SELECT_DEFINED_USER, params, fetch=True)
-        print(f"SEARCHING FOR: {like_pattern}")
-        print("SEARCH RESULT:", result)
         return result
 
     def delete_user(self, user_id: int):

@@ -1,0 +1,317 @@
+[
+    {
+        "sex": "m",
+        "last_name": "Шевченко",
+        "first_name": "Олександр",
+        "fathers_name": "Іванович",
+        "birth_date": "1985-04-12",
+        "death_date": "",
+        "age": 40
+    },
+    {
+        "sex": "f",
+        "last_name": "",
+        "first_name": "Марія",
+        "fathers_name": "",
+        "birth_date": "1992-08-24",
+        "death_date": "",
+        "age": 33
+    },
+    {
+        "sex": "m",
+        "last_name": "Коваленко",
+        "first_name": "Максим",
+        "fathers_name": "Сергійович",
+        "birth_date": "1978-11-05",
+        "death_date": "2020-03-15",
+        "age": 41
+    },
+    {
+        "sex": "f",
+        "last_name": "Бойко",
+        "first_name": "Анна",
+        "fathers_name": "Петрівна",
+        "birth_date": "2001-01-19",
+        "death_date": "",
+        "age": 25
+    },
+    {
+        "sex": "m",
+        "last_name": "",
+        "first_name": "Дмитро",
+        "fathers_name": "Олегович",
+        "birth_date": "1995-07-30",
+        "death_date": "",
+        "age": 30
+    },
+    {
+        "sex": "f",
+        "last_name": "Ткаченко",
+        "first_name": "Олена",
+        "fathers_name": "",
+        "birth_date": "1988-12-11",
+        "death_date": "",
+        "age": 37
+    },
+    {
+        "sex": "m",
+        "last_name": "Кравченко",
+        "first_name": "Андрій",
+        "fathers_name": "Миколайович",
+        "birth_date": "1965-02-28",
+        "death_date": "2015-09-10",
+        "age": 50
+    },
+    {
+        "sex": "f",
+        "last_name": "",
+        "first_name": "Юлія",
+        "fathers_name": "Василівна",
+        "birth_date": "1998-05-17",
+        "death_date": "",
+        "age": 27
+    },
+    {
+        "sex": "m",
+        "last_name": "Марченко",
+        "first_name": "Сергій",
+        "fathers_name": "",
+        "birth_date": "1982-10-08",
+        "death_date": "",
+        "age": 43
+    },
+    {
+        "sex": "f",
+        "last_name": "Руденко",
+        "first_name": "Ірина",
+        "fathers_name": "Вікторівна",
+        "birth_date": "1975-06-22",
+        "death_date": "",
+        "age": 50
+    },
+    {
+        "sex": "m",
+        "last_name": "",
+        "first_name": "Іван",
+        "fathers_name": "",
+        "birth_date": "2005-09-01",
+        "death_date": "",
+        "age": 20
+    },
+    {
+        "sex": "f",
+        "last_name": "Мороз",
+        "first_name": "Наталія",
+        "fathers_name": "Григорівна",
+        "birth_date": "1960-03-14",
+        "death_date": "2022-01-05",
+        "age": 61
+    },
+    {
+        "sex": "m",
+        "last_name": "Лисенко",
+        "first_name": "Петро",
+        "fathers_name": "Тарасович",
+        "birth_date": "1990-11-25",
+        "death_date": "",
+        "age": 35
+    },
+    {
+        "sex": "f",
+        "last_name": "Петренко",
+        "first_name": "Тетяна",
+        "fathers_name": "",
+        "birth_date": "1984-04-03",
+        "death_date": "",
+        "age": 41
+    },
+    {
+        "sex": "m",
+        "last_name": "",
+        "first_name": "Василь",
+        "fathers_name": "Степанович",
+        "birth_date": "1970-08-19",
+        "death_date": "",
+        "age": 55
+    },
+    {
+        "sex": "f",
+        "last_name": "Мельник",
+        "first_name": "Катерина",
+        "fathers_name": "Олександрівна",
+        "birth_date": "1999-12-07",
+        "death_date": "",
+        "age": 26
+    },
+    {
+        "sex": "m",
+        "last_name": "Павленко",
+        "first_name": "Євген",
+        "fathers_name": "Володимирович",
+        "birth_date": "1987-01-29",
+        "death_date": "",
+        "age": 39
+    },
+    {
+        "sex": "f",
+        "last_name": "",
+        "first_name": "Світлана",
+        "fathers_name": "Юріївна",
+        "birth_date": "1955-10-14",
+        "death_date": "2018-06-20",
+        "age": 62
+    },
+    {
+        "sex": "m",
+        "last_name": "Козак",
+        "first_name": "Тарас",
+        "fathers_name": "",
+        "birth_date": "2002-03-08",
+        "death_date": "",
+        "age": 24
+    },
+    {
+        "sex": "f",
+        "last_name": "Гриценко",
+        "first_name": "Оксана",
+        "fathers_name": "Павлівна",
+        "birth_date": "1993-07-16",
+        "death_date": "",
+        "age": 32
+    },
+    {
+        "sex": "m",
+        "last_name": "",
+        "first_name": "Михайло",
+        "fathers_name": "Богданович",
+        "birth_date": "1980-05-21",
+        "death_date": "",
+        "age": 45
+    },
+    {
+        "sex": "f",
+        "last_name": "Сидоренко",
+        "first_name": "Дарія",
+        "fathers_name": "",
+        "birth_date": "2004-11-11",
+        "death_date": "",
+        "age": 21
+    },
+    {
+        "sex": "m",
+        "last_name": "Савченко",
+        "first_name": "Богдан",
+        "fathers_name": "Анатолійович",
+        "birth_date": "1973-09-05",
+        "death_date": "",
+        "age": 52
+    },
+    {
+        "sex": "f",
+        "last_name": "Романенко",
+        "first_name": "Вікторія",
+        "fathers_name": "Романівна",
+        "birth_date": "1989-02-18",
+        "death_date": "",
+        "age": 37
+    },
+    {
+        "sex": "m",
+        "last_name": "",
+        "first_name": "Юрій",
+        "fathers_name": "Леонідович",
+        "birth_date": "1968-12-30",
+        "death_date": "2021-08-14",
+        "age": 52
+    },
+    {
+        "sex": "f",
+        "last_name": "Гармаш",
+        "first_name": "Софія",
+        "fathers_name": "",
+        "birth_date": "2000-06-04",
+        "death_date": "",
+        "age": 25
+    },
+    {
+        "sex": "m",
+        "last_name": "Поліщук",
+        "first_name": "Віктор",
+        "fathers_name": "Євгенович",
+        "birth_date": "1991-04-26",
+        "death_date": "",
+        "age": 34
+    },
+    {
+        "sex": "f",
+        "last_name": "",
+        "first_name": "Надія",
+        "fathers_name": "Костянтинівна",
+        "birth_date": "1986-10-13",
+        "death_date": "",
+        "age": 39
+    },
+    {
+        "sex": "m",
+        "last_name": "Литвин",
+        "first_name": "Олег",
+        "fathers_name": "",
+        "birth_date": "1996-01-02",
+        "death_date": "",
+        "age": 30
+    },
+    {
+        "sex": "f",
+        "last_name": "Клименко",
+        "first_name": "Анастасія",
+        "fathers_name": "Ярославівна",
+        "birth_date": "1994-08-09",
+        "death_date": "",
+        "age": 31
+    },
+    {
+        "sex": "m",
+        "last_name": "",
+        "first_name": "Роман",
+        "fathers_name": "Антонович",
+        "birth_date": "1979-05-18",
+        "death_date": "",
+        "age": 46
+    },
+    {
+        "sex": "f",
+        "last_name": "Даниленко",
+        "first_name": "Аліна",
+        "fathers_name": "",
+        "birth_date": "2003-12-25",
+        "death_date": "",
+        "age": 22
+    },
+    {
+        "sex": "m",
+        "last_name": "Костенко",
+        "first_name": "Валерій",
+        "fathers_name": "Дмитрович",
+        "birth_date": "1958-07-07",
+        "death_date": "2010-11-20",
+        "age": 52
+    },
+    {
+        "sex": "f",
+        "last_name": "",
+        "first_name": "Євгенія",
+        "fathers_name": "Артемівна",
+        "birth_date": "1983-02-14",
+        "death_date": "",
+        "age": 43
+    },
+    {
+        "sex": "m",
+        "last_name": "Жук",
+        "first_name": "Антон",
+        "fathers_name": "Ігорович",
+        "birth_date": "1997-09-21",
+        "death_date": "",
+        "age": 28
+    }
+]

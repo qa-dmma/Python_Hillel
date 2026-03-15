@@ -1,96 +1,224 @@
 <!DOCTYPE html>
-<html>
+<html lang="uk">
 <head>
+    <meta charset="UTF-8">
     <title>Diploma Project</title>
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .custom-card {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
 </head>
-<body class="container mt-4">
+<body class="bg-light pb-5">
 
-{% if error %}
-<div class="alert alert-danger" role="alert">
-    <strong>Помилка!</strong> {{ error }}
+<nav class="navbar navbar-dark bg-dark mb-4 shadow-sm">
+    <div class="container">
+        <span class="navbar-brand mb-0 h1">Система керування записами (Diploma Project)</span>
+    </div>
+</nav>
+
+<div class="container">
+
+    {% if error %}
+    <div class="alert alert-danger alert-dismissible fade show shadow-sm" role="alert">
+        <strong>Помилка!</strong> {{ error }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+    <div class="card custom-card mb-4">
+        <div class="card-header bg-white pb-0 border-0 pt-3">
+            <h5 class="card-title text-primary">Додати нового користувача</h5>
+        </div>
+        <div class="card-body">
+            <form action="/add" method="POST">
+                <div class="row g-2 mb-3">
+                    <div class="col-md-4">
+                        <label class="form-label text-muted small mb-1">Прізвище</label>
+                        <input name="last_name" placeholder="Прізвище (опційно)" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label text-muted small mb-1">Ім'я *</label>
+                        <input name="first_name" placeholder="Ім'я" class="form-control" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label text-muted small mb-1">По батькові</label>
+                        <input name="fathers_name" placeholder="По батькові (опційно)" class="form-control">
+                    </div>
+                </div>
+                <div class="row g-2 align-items-end">
+                    <div class="col-md-4">
+                        <label class="form-label text-muted small mb-1">Дата народження *</label>
+                        <input name="birth_date" placeholder="Дата Народження" class="form-control" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label text-muted small mb-1">Дата смерті</label>
+                        <input name="death_date" placeholder="Дата смерті (опційно)" class="form-control">
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-success w-100">Зберегти користувача</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card custom-card mb-4">
+        <div class="card-body bg-white rounded">
+            <div class="row align-items-center gy-3">
+
+                <div class="col-lg-5">
+                    <form action="/" method="GET" class="d-flex m-0">
+                        <div class="input-group">
+                            <input name="search" value="{{ search_query }}" placeholder="Пошук по імені..."
+                                   class="form-control">
+                            <button type="submit" class="btn btn-primary">Знайти</button>
+                            <a href="/" class="btn btn-outline-secondary">Скинути</a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-lg-7 d-flex justify-content-lg-end justify-content-start flex-wrap gap-2">
+                    <a href="/?show_all=true" class="btn btn-outline-primary">Показати всіх</a>
+
+                    <a href="/export?{{ current_qs }}"
+                       class="btn btn-info text-white {% if not users %}disabled{% endif %}">
+                        Експорт (JSON)
+                    </a>
+
+                    <a href="/delete_all" class="btn btn-danger"
+                       onclick="return confirm('Ви впевнені, що хочете видалити ВСІ записи з бази?')">Очистити БД</a>
+
+                    {% if has_json %}
+                    <a href="/clear_json" class="btn btn-outline-danger">Скинути імпорт</a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <hr class="text-muted">
+
+            <form action="/upload_json" method="POST" enctype="multipart/form-data"
+                  class="d-flex align-items-center gap-2 justify-content-end m-0">
+                <label class="form-label mb-0 text-muted small">Імпорт даних:</label>
+                <input type="file" name="file" accept=".json" class="form-control form-control-sm"
+                       style="max-width: 250px;" required>
+                <button type="submit" class="btn btn-sm btn-warning text-dark">Завантажити файл</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card custom-card">
+        <div class="card-header bg-white pb-0 border-0 pt-3">
+            <h5 class="card-title text-primary">Список користувачів</h5>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle text-center mb-0">
+                    <thead class="table-light text-muted small">
+                    <tr>
+                        <th>ID</th>
+                        <th>Ім'я</th>
+                        <th>Прізвище</th>
+                        <th>По батькові</th>
+                        <th>Вік</th>
+                        <th>Стать</th>
+                        <th>Дата Народження</th>
+                        <th>Дата смерті</th>
+                        <th>Джерело</th>
+                        <th>Дія</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                    <tr class="{% if user[8] == 'JSON' %}table-warning{% endif %}">
+
+                        <td><span class="text-muted">{{ user[0] }}</span></td>
+
+                        <td>{{ user[3] }}</td>
+
+                        <td>{{ user[2] }}</td>
+
+                        <td>{{ user[4] }}</td>
+
+                        <td>{{ user[7] | format_age }}</td>
+
+                        <td>
+                            {% if user[1] == 'm' %} Чоловік
+                            {% elif user[1] == 'f' %} Жінка
+                            {% elif user[1] == 'unknown' %} Невизначено
+                            {% endif %}
+                        </td>
+
+                        <td>
+                                <span class="d-block small text-muted">
+                                    {% if user[1] == 'm' %}Народився:
+                                    {% elif user[1] == 'f' %}Народилася:
+                                    {% else %}Дата народження:
+                                    {% endif %}
+                                </span>
+                            {{ user[5] | date_ukr }}
+                        </td>
+
+                        <td>
+                            {% if user[6] %}
+                            <span class="d-block small text-muted">
+                                    {% if user[1] == 'm' %}Помер:
+                                    {% elif user[1] == 'f' %}Померла:
+                                    {% else %}Дата смерті:
+                                    {% endif %}
+                                </span>
+                            {{ user[6] | date_ukr }}
+                            {% else %}
+                            -
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {% if user[8] == 'БД' %}
+                            <span class="badge bg-success bg-opacity-75">БД</span>
+                            {% else %}
+                            <span class="badge bg-warning text-dark">JSON</span>
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            {% if user[8] == 'БД' %}
+                            <a href="/delete/{{ user[9] }}" class="btn btn-sm btn-outline-danger">Видалити</a>
+                            {% else %}
+                            <a href="/add_from_json/{{ user[9] }}" class="btn btn-sm btn-success shadow-sm">Додати</a>
+                            {% endif %}
+                        </td>
+
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="10" class="text-center text-muted py-4">
+                            Даних немає. Скористайтесь пошуком або натисніть "Показати всіх".
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
-{% endif %}
 
-<h2>Додати користувача</h2>
-
-<form action="/add" method="POST">
-    <input name="first_name" placeholder="Ім'я" class="form-control mb-2" required>
-    <input name="fathers_name" placeholder="По батькові (опційно)" class="form-control mb-2">
-    <input name="last_name" placeholder="Прізвище (опційно)" class="form-control mb-2">
-    <input name="birth_date" placeholder="Дата народження" class="form-control mb-2" required>
-    <input name="death_date" placeholder="Дата смерті (опційно)" class="form-control mb-2">
-    <button type="submit" class="btn btn-success">Зберегти</button>
-</form>
-
-<hr>
-
-<form action="/" method="GET">
-    <input name="search" placeholder="Пошук по імені" class="form-control mb-2">
-    <button type="submit" class="btn btn-primary">Пошук</button>
-    <a href="/" class="btn btn-secondary">Скинути</a>
-</form>
-
-<a href="/delete_all" class="btn btn-danger mt-3">Видалити всі записи</a>
-
-<hr>
-
-<h3>Список користувачів</h3>
-
-<table class="table table-bordered">
-    <tr>
-        <th>ID</th>
-        <th>Ім'я</th>
-        <th>Прізвище</th>
-        <th>По батькові</th>
-        <th>Вік</th>
-        <th>Стать</th>
-        <th>Дата Народження</th>
-        <th>Дата смерті</th>
-        <th>Дія</th>
-    </tr>
-
-    {% for user in users %}
-    <tr>
-        <td>{{ user[0] }}</td>
-        <td>{{ user[3] }}</td>
-        <td>{{ user[2] }}</td>
-        <td>{{ user[4] }}</td>
-        <td>{{ user[7] | format_age }}</td>
-        <td>
-            {% if user[1] == 'm' %}
-            Чоловік
-            {% elif user[1] == 'f' %}
-            Жінка
-            {% elif user[1] == 'unknown' %}
-            Невизначено
-            {% endif %}
-        </td>
-        <td>
-            {% if user[1] == 'm' %}
-            Народився
-            {% elif user[1] == 'f' %}
-            Народилася
-            {% endif %}
-            {{ user[5] | date_ukr }}
-        </td>
-        <td>
-            {% if user[6] %}
-            {% if user[1] == 'm' %}
-            Помер
-            {% elif user[1] == 'f' %}
-            Померла
-            {% endif %}
-            {{ user[6] | date_ukr }}
-            {% endif %}
-        </td>
-        <td>
-            <a href="/delete/{{ user[0] }}" class="btn btn-sm btn-danger">Видалити</a>
-        </td>
-    </tr>
-    {% endfor %}
-</table>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let scrollPos = sessionStorage.getItem("scrollPosition");
+        if (scrollPos) {
+            window.scrollTo(0, parseInt(scrollPos));
+            sessionStorage.removeItem("scrollPosition");
+        }
+    });
+    window.addEventListener("beforeunload", function() {
+        sessionStorage.setItem("scrollPosition", window.scrollY);
+    });
+</script>
 </body>
 </html>

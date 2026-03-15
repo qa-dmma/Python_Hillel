@@ -5,12 +5,12 @@ GENDER_RULES = [
     ('fathers_name', 'вич', 'm'),
     ('fathers_name', 'вна', 'f'),
     ('first_name', ('а', 'я'), 'f'),
-    ('first_name', ('о', 'й', 'ь'), 'm')
+    ('first_name', ('о', 'й', 'ь', 'н', 'р', 'м', 'в', 'д', 'т', 'с', 'л', 'к', 'б', 'г', 'п', 'з', 'ш', 'ч'), 'm')
 ]
 
 EXCEPTIONS = {
-    'male': {"ілля", "микола"},
-    'female': {"саша"}
+    'male': {"ілля", "микола", "микита", "кузьма"},
+    'female': {"саша", "любов", "нінель"}
 }
 
 
@@ -62,7 +62,6 @@ def gender_define(first_name, fathers_name):
         return 'f'
     if name_lower in EXCEPTIONS['male'] or father_lower in EXCEPTIONS['male']:
         return 'm'
-
     fields = {'first_name': first_name, 'fathers_name': fathers_name}
     for field_name, ending, gender in GENDER_RULES:
         value = fields.get(field_name, '')
@@ -74,16 +73,7 @@ def gender_define(first_name, fathers_name):
         else:
             if value.lower().endswith(ending):
                 return gender
-
     return 'unknown'
-
-
-# def record_counter(id):
-#     if len(id) == 0:
-#         return 1
-#     else:
-#         id += 1
-#         return id
 
 def format_age(age):
     if age is None or age == "":
@@ -92,14 +82,12 @@ def format_age(age):
         age_int = int(age)
         rem10 = age_int % 10
         rem100 = age_int % 100
-
         if rem10 == 1 and rem100 != 11:
             word = "рік"
         elif rem10 in (2, 3, 4) and rem100 not in (12, 13, 14):
             word = "роки"
         else:
             word = "років"
-
         return f"{age_int} {word}"
     except (ValueError, TypeError):
         return age

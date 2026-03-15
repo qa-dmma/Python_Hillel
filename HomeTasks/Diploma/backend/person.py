@@ -67,6 +67,7 @@ class Record:
             self.user['First_Name'] = first_name
             return first_name
         else:
+            self.user['First_Name'] = None
             return f'First name should be 2 or more characters'
 
     def _add_last_name(self, last_name):
