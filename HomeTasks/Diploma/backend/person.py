@@ -1,8 +1,8 @@
 from . import utils
+from .utils import log_action
 
 
 class Human:
-
     def __init__(self, last_name, first_name, fathers_name):
         self.first_name = first_name
         self.last_name = last_name
@@ -13,7 +13,6 @@ class Human:
 
 
 class Person(Human):
-
     def __init__(self, last_name, first_name, fathers_name, birth_date, death_date, sex):
         super().__init__(last_name, first_name, fathers_name)
         self.birth_date = birth_date
@@ -37,7 +36,9 @@ class Record:
         return result
 
     def add_person(self, birth_date, first_name, fathers_name='', last_name='', death_date=''):
+        log_action(f"[LOGIC] Початок формування структури для: {first_name}")
         self.user = {}
+
         self._add_first_name(first_name)
         self._add_last_name(last_name)
         self._fathers_name(fathers_name)
@@ -45,13 +46,19 @@ class Record:
         self._death_date(death_date)
         self._age()
         self._sex(first_name, fathers_name)
+
         self.users.append(self.user)
+        log_action(f"[LOGIC] Запис для {first_name} успішно додано до черги (users list)")
 
     def save_to_db(self, db_source):
+        last_id = None
+        count = len(self.users)
+        log_action(f"[LOGIC] Підготовка до збереження {count} записів у БД")
+
         for user in self.users:
             d_date = str(user['Death_Date']) if user['Death_Date'] else ""
 
-            db_source.insert_user(
+            last_id = db_source.insert_user(
                 sex=user['Sex'],
                 last_name=user['Last_Name'] or "",
                 first_name=user['First_Name'],
@@ -60,13 +67,17 @@ class Record:
                 death_date=d_date,
                 age=user['Age']
             )
+
+        log_action("[LOGIC] Список записів у Record очищено після збереження")
         self.users = []
+        return last_id
 
     def _add_first_name(self, first_name):
         if len(first_name) >= 2:
             self.user['First_Name'] = first_name
             return first_name
         else:
+            log_action(f"[LOGIC] ВАЛІДАЦІЯ: Ім'я '{first_name}' занадто коротке!")
             self.user['First_Name'] = None
             return f'First name should be 2 or more characters'
 
@@ -81,19 +92,27 @@ class Record:
     def _sex(self, name, fathers_name):
         formatted = utils.gender_define(name, fathers_name)
         self.user['Sex'] = formatted
+        log_action(f"[LOGIC] Визначення статі для {name}: {formatted}")
         return formatted
 
     def _birth_date(self, birth_date):
         formatted = utils.parse_date(birth_date)
         self.user['Birth_Date'] = formatted
+        if formatted:
+            log_action(f"[LOGIC] Дата народження розпарсена: {formatted}")
+        else:
+            log_action(f"[LOGIC] ПОМИЛКА: Не вдалося розпарсити дату: {birth_date}")
         return formatted
 
     def _death_date(self, death_date):
         formatted = utils.parse_date(death_date)
         self.user['Death_Date'] = formatted
+        if death_date and formatted:
+            log_action(f"[LOGIC] Дата смерті розпарсена: {formatted}")
         return formatted
 
     def _age(self):
         formatted = utils.age_count(self.user.get('Birth_Date'), self.user.get('Death_Date'))
         self.user['Age'] = formatted
+        log_action(f"[LOGIC] Розраховано вік: {formatted}")
         return formatted

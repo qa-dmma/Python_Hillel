@@ -33,6 +33,10 @@ WHERE
     OR (COALESCE(fathers_name,'') || ' ' || COALESCE(last_name,'')) LIKE ?
 """
 
+SELECT_USER_BY_ID = "SELECT * FROM diploma_users WHERE id = ?"
+
+SELECT_USERS_BY_IDS = "SELECT * FROM diploma_users WHERE id IN ({})"
+
 DELETE_USER_BY_ID = "DELETE FROM diploma_users WHERE id = ?"
 
 DELETE_ALL_USERS = "DELETE FROM diploma_users"
